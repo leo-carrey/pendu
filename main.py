@@ -4,12 +4,15 @@ import random
 from colors import *
 import time
 
+AUTHORIZED_KEYS=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+
 pygame.init()
 pygame.font.init
 pygame.display.set_caption('Hangman')
 
 screen=pygame.display.set_mode((800,500))
 DISPLAYSURF=pygame.display.set_mode((800,500))
+
 
 def ESC_func(running):
     if event.type == pygame.KEYDOWN and event.key == K_ESCAPE:
@@ -18,7 +21,9 @@ def ESC_func(running):
 
 def display_game():
     DISPLAYSURF.fill(WHITE)
-    DISPLAYSURF.blit(COMIC_SANS_BIG.render('salut', True, BLACK), (200, 100))
+    DISPLAYSURF.blit(COMIC_SANS_SMALL.render(' '.join(AUTHORIZED_KEYS[:13]), True, BLACK), (200, 100))
+    DISPLAYSURF.blit(COMIC_SANS_SMALL.render(' '.join(AUTHORIZED_KEYS)[26:], True, BLACK), (200, 150))
+
 
 if __name__ == "__main__":
     running=True
